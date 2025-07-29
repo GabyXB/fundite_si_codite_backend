@@ -188,10 +188,7 @@ export const generatePetClothingPreview = async (req, res) => {
       ],
       tools: [{ 
         type: "image_generation",
-        image_generation: {
-          quality: generationQuality,
-          size: imageSize
-        }
+        quality: "low",
       }]
     });
 
@@ -227,7 +224,7 @@ export const generatePetClothingPreview = async (req, res) => {
     
     console.log('Încărcând imaginea în S3...');
     
-    // Încărcăm imaginea în S3 (fără ACL, ca în upload-ul existent)
+    // Încărcăm imaginea în S3 
     const uploadParams = {
       Bucket: s3Config.bucketName,
       Key: `images/${fileName}`,
